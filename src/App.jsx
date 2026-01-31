@@ -1,10 +1,27 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import questions from './data/questions.json'
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
-  const [revealedAnswers, setRevealedAnswers] = useState({})
+  
+  // Initialize from localStorage if available
+  const [revealedAnswers, setRevealedAnswers] = useState(() => {
+    const saved = localStorage.getItem('dotnet-quiz-progress')
+    return saved ? JSON.parse(saved) : {}
+  })
+
+  // Save to localStorage whenever state changes
+  useEffect(() => {
+    localStorage.setItem('dotnet-quiz-progress', JSON.stringify(revealedAnswers))
+  }, [revealedAnswers])
+
+  const resetAllProgress = () => {
+    if (window.confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
+      setRevealedAnswers({})
+      localStorage.removeItem('dotnet-quiz-progress')
+    }
+  }
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -62,6 +79,10 @@ function App() {
     return labels[lang] || lang?.toUpperCase() || 'CODE'
   }
 
+
+  // Calculate progress
+  const progressPercentage = Math.round((Object.keys(revealedAnswers).length / questions.questions.length) * 100)
+
   return (
     <div className="app">
       <div className="study-screen">
@@ -71,9 +92,26 @@ function App() {
             <div className="header-content">
               <div className="logo">💻</div>
               <h1>.NET Developer Study Guide</h1>
-              <p className="subtitle">50 Technical Interview Questions</p>
+              <p className="subtitle">{questions.questions.length} Technical Interview Questions</p>
+              
+              <button className="reset-all-btn" onClick={resetAllProgress} title="Reset all answers">
+                Reset All Progress ↺
+              </button>
             </div>
           </header>
+
+          {/* Sticky Progress Bar */}
+          <div className="sticky-progress">
+            <div className="progress-track">
+              <div 
+                className="progress-fill" 
+                style={{ width: `${progressPercentage}%` }}
+              ></div>
+            </div>
+            <div className="progress-text">
+              {progressPercentage}% Complete ({Object.keys(revealedAnswers).length}/{questions.questions.length})
+            </div>
+          </div>
 
           {/* Filters */}
           <div className="filters-section">
