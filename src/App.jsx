@@ -15,7 +15,8 @@ function App() {
   // Filter questions based on search and category
   const filteredQuestions = useMemo(() => {
     return questions.questions.filter(q => {
-      const matchesSearch = q.question.toLowerCase().includes(searchTerm.toLowerCase())
+      const matchesSearch = q.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           (q.code && q.code.toLowerCase().includes(searchTerm.toLowerCase()))
       const matchesCategory = selectedCategory === 'All' || q.category === selectedCategory
       return matchesSearch && matchesCategory
     })
@@ -36,7 +37,30 @@ function App() {
     })
   }
 
+  // Format inline code in text (backticks)
+  const formatText = (text) => {
+    if (!text) return text
+    const parts = text.split(/(`[^`]+`)/)
+    return parts.map((part, i) => {
+      if (part.startsWith('`') && part.endsWith('`')) {
+        return <code key={i} className="inline-code">{part.slice(1, -1)}</code>
+      }
+      return part
+    })
+  }
+
   const optionLetters = ['A', 'B', 'C', 'D']
+
+  const getLanguageLabel = (lang) => {
+    const labels = {
+      'csharp': 'C#',
+      'javascript': 'JavaScript',
+      'sql': 'SQL',
+      'html': 'HTML',
+      'css': 'CSS'
+    }
+    return labels[lang] || lang?.toUpperCase() || 'CODE'
+  }
 
   return (
     <div className="app">
@@ -57,7 +81,7 @@ function App() {
               <span className="search-icon">🔍</span>
               <input
                 type="text"
-                placeholder="Search questions..."
+                placeholder="Search questions or code..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="search-input"
@@ -111,7 +135,19 @@ function App() {
                     )}
                   </div>
                   
-                  <h3 className="question-text">{question.question}</h3>
+                  <h3 className="question-text">{formatText(question.question)}</h3>
+                  
+                  {/* Code Block */}
+                  {question.code && (
+                    <div className="code-block">
+                      <div className="code-header">
+                        <span className="code-language">{getLanguageLabel(question.codeLanguage)}</span>
+                      </div>
+                      <pre className="code-content">
+                        <code>{question.code}</code>
+                      </pre>
+                    </div>
+                  )}
                   
                   <div className="options-grid">
                     {question.options.map((option, index) => {
@@ -135,7 +171,7 @@ function App() {
                           disabled={isRevealed}
                         >
                           <span className="option-letter">{optionLetters[index]}</span>
-                          <span className="option-text">{option}</span>
+                          <span className="option-text">{formatText(option)}</span>
                           {isRevealed && index === question.correctAnswer && (
                             <span className="correct-icon">✓</span>
                           )}

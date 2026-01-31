@@ -6,7 +6,9 @@
     {
       "id": 1,
       "category": "C# Basics",
-      "question": "What will be the output of the following code?\n\nint x = 5;\nint y = x++;\nConsole.WriteLine($\"{x}, {y}\");",
+      "question": "What will be the output of the following code?",
+      "code": "int x = 5;\nint y = x++;\nConsole.WriteLine($\"{x}, {y}\");",
+      "codeLanguage": "csharp",
       "options": ["5, 5", "6, 5", "5, 6", "6, 6"],
       "correctAnswer": 1
     },
@@ -65,7 +67,9 @@
     {
       "id": 8,
       "category": "OOP",
-      "question": "What will be the output when the code is executed?\n\nBaseClass obj = new DerivedClass();\nobj.Print();\n\nclass BaseClass { public virtual void Print() => Console.WriteLine(\"Base\"); }\nclass DerivedClass : BaseClass { public new void Print() => Console.WriteLine(\"Derived\"); }",
+      "question": "What will be the output when the code is executed?",
+      "code": "BaseClass obj = new DerivedClass();\nobj.Print();\n\nclass BaseClass { \n    public virtual void Print() => Console.WriteLine(\"Base\"); \n}\nclass DerivedClass : BaseClass { \n    public new void Print() => Console.WriteLine(\"Derived\"); \n}",
+      "codeLanguage": "csharp",
       "options": ["Base", "Derived", "Compilation Error", "Runtime Error"],
       "correctAnswer": 0
     },
@@ -96,7 +100,9 @@
     {
       "id": 11,
       "category": "ASP.NET Core",
-      "question": "In an ASP.NET Core Web API with [Route(\"api/[controller]\")] on ProductsController, which action handles GET /api/products/123?\n\n[HttpGet] GetAllProducts()\n[HttpGet(\"{id}\")] GetProductById(int id)\n[HttpPost] CreateProduct(Product p)",
+      "question": "In an ASP.NET Core Web API with the following controller, which action handles GET /api/products/123?",
+      "code": "[Route(\"api/[controller]\")]\npublic class ProductsController : ControllerBase\n{\n    [HttpGet]\n    public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()\n    \n    [HttpGet(\"{id}\")]\n    public async Task<ActionResult<Product>> GetProductById(int id)\n    \n    [HttpPost]\n    public async Task<ActionResult<Product>> CreateProduct(Product p)\n}",
+      "codeLanguage": "csharp",
       "options": ["GetAllProducts", "GetProductById", "CreateProduct", "None of them"],
       "correctAnswer": 1
     },
@@ -147,11 +153,13 @@
       "id": 16,
       "category": "Entity Framework",
       "question": "Which LINQ method should you use to filter products with price greater than a specified value?",
+      "code": "// Option A:\nvar products = dbContext.Products.FindAll(p => p.Price > value).ToList();\n\n// Option B:\nvar products = dbContext.Products.Filter(p => p.Price > value).ToList();\n\n// Option C:\nvar products = dbContext.Products.Select(p => p.Price > value).ToList();\n\n// Option D:\nvar products = dbContext.Products.Where(p => p.Price > value).ToList();",
+      "codeLanguage": "csharp",
       "options": [
-        "dbContext.Products.FindAll(p => p.Price > value).ToList()",
-        "dbContext.Products.Filter(p => p.Price > value).ToList()",
-        "dbContext.Products.Select(p => p.Price > value).ToList()",
-        "dbContext.Products.Where(p => p.Price > value).ToList()"
+        "FindAll(p => p.Price > value)",
+        "Filter(p => p.Price > value)",
+        "Select(p => p.Price > value)",
+        "Where(p => p.Price > value)"
       ],
       "correctAnswer": 3
     },
@@ -202,6 +210,8 @@
       "id": 21,
       "category": "SQL",
       "question": "In a query with INNER JOIN between Users and Projects tables, how many table scans are performed at minimum?",
+      "code": "SELECT U.FirstName \nFROM Users U \nINNER JOIN Projects P ON U.Id = P.CreatedBy \nWHERE U.Email <> @email AND P.Id = @projectId",
+      "codeLanguage": "sql",
       "options": ["1", "2", "3", "0"],
       "correctAnswer": 1
     },
@@ -251,7 +261,9 @@
     {
       "id": 26,
       "category": "JavaScript",
-      "question": "What will be the output?\n\nfunction createMultiplier(factor) {\n  return function(number) {\n    return number * factor;\n  };\n}\nconst multiplyByTwo = createMultiplier(2);\nconst multiplyByFive = createMultiplier(5);\nconsole.log(multiplyByTwo(3), multiplyByFive(4), multiplyByTwo(1));",
+      "question": "What will be the output?",
+      "code": "function createMultiplier(factor) {\n  return function(number) {\n    return number * factor;\n  };\n}\n\nconst multiplyByTwo = createMultiplier(2);\nconst multiplyByFive = createMultiplier(5);\n\nconsole.log(multiplyByTwo(3), multiplyByFive(4), multiplyByTwo(1));",
+      "codeLanguage": "javascript",
       "options": ["8, 25, 1", "6, 20, 2", "6, 20, 1", "8, 25, 2"],
       "correctAnswer": 1
     },
@@ -294,7 +306,9 @@
     {
       "id": 30,
       "category": "JavaScript",
-      "question": "What is the output of: console.log(typeof null);",
+      "question": "What is the output of this code?",
+      "code": "console.log(typeof null);",
+      "codeLanguage": "javascript",
       "options": ["null", "undefined", "object", "NaN"],
       "correctAnswer": 2
     },
@@ -302,6 +316,8 @@
       "id": 31,
       "category": "Design Patterns",
       "question": "What design pattern is used when you have an interface with multiple implementations and you select one at runtime based on conditions?",
+      "code": "interface ITestInterface {\n    bool CanProcessDocument(Document doc);\n    void Process(Document doc);\n}\n\nforeach (var item in implementations) {\n    if (item.CanProcessDocument(doc)) {\n        item.Process(doc);\n    }\n}",
+      "codeLanguage": "csharp",
       "options": ["Template Method", "Decorator", "Proxy", "Strategy"],
       "correctAnswer": 3
     },
@@ -309,6 +325,8 @@
       "id": 32,
       "category": "Design Patterns",
       "question": "What pattern is used when wrapping an object to add new behavior without modifying the original class?",
+      "code": "public class TrimmedTextProcessor : ITextProcessor {\n    private readonly ITextProcessor _processor;\n    \n    public string Process(string input) => _processor.Process(input.Trim());\n}",
+      "codeLanguage": "csharp",
       "options": ["Strategy", "Decorator", "Singleton", "Factory"],
       "correctAnswer": 1
     },
@@ -365,7 +383,9 @@
     {
       "id": 38,
       "category": "C# Advanced",
-      "question": "What will be printed?\n\nIEnumerable<int> YieldExample() {\n  for (int i = 0; i < 2; i++) {\n    Console.WriteLine($\"YieldExample {i}\");\n    yield return i;\n  }\n}\nforeach (var i in YieldExample().Select(i => $\"Number: {i}\"))\n  Console.WriteLine(i);",
+      "question": "What will be the output of this code?",
+      "code": "public static IEnumerable<int> YieldExample() {\n    for (int i = 0; i < 2; i++) {\n        Console.WriteLine($\"YieldExample {i}\");\n        yield return i;\n    }\n}\n\nforeach (var i in YieldExample().Select(i => $\"Number: {i}\"))\n    Console.WriteLine(i);",
+      "codeLanguage": "csharp",
       "options": [
         "YieldExample 0, YieldExample 1, Number: 0, Number: 1",
         "YieldExample 0, Number: 0, YieldExample 1, Number: 1",
@@ -414,6 +434,8 @@
       "id": 42,
       "category": "ASP.NET Core",
       "question": "How do you return a 404 Not Found response from an ASP.NET Core controller action?",
+      "code": "// Which one is correct?\n\n// A:\nreturn NotFound();\n\n// B:\nreturn Error(404);\n\n// C:\nthrow new NotFoundException();\n\n// D:\nreturn StatusCode(-1);",
+      "codeLanguage": "csharp",
       "options": [
         "return NotFound();",
         "return Error(404);",

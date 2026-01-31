@@ -304,6 +304,59 @@ body {
   color: var(--text-primary);
 }
 
+/* Code Block Styles */
+.code-block {
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1e1e3f;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: rgba(99, 102, 241, 0.2);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.code-language {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.code-content {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  background: #0d0d1a;
+}
+
+.code-content code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+  white-space: pre;
+  display: block;
+}
+
+/* Inline code */
+.inline-code {
+  background: rgba(99, 102, 241, 0.2);
+  color: #c4b5fd;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
 /* Options Grid */
 .options-grid {
   display: grid;
