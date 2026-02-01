@@ -24,10 +24,10 @@
       "code": "int x = 5;\nint y = x++;\nConsole.WriteLine($\"{x}, {y}\");",
       "codeLanguage": "csharp",
       "options": [
-        "x is 5, y is 5 (Increment happens after assignment)",
-        "x is 6, y is 5 (Post-increment increases x after assignment)",
-        "x is 5, y is 6 (Pre-increment increases x before assignment)",
-        "x is 6, y is 6 (Both variables are incremented simultaneously)"
+        "x is 5, y is 5",
+        "x is 6, y is 5",
+        "x is 5, y is 6",
+        "x is 6, y is 6"
       ],
       "correctAnswer": 1
     },
@@ -36,10 +36,10 @@
       "category": "C# Basics",
       "question": "Which keyword is used to prevent a class from being inherited in C#?",
       "options": [
-        "static (Prevents instantiation but allows inheritance)",
-        "sealed (Explicitly forbids inheritance from this class)",
-        "abstract (Requires inheritance to be used)",
-        "virtual (Allows methods to be overridden in derived classes)"
+        "static",
+        "sealed",
+        "abstract",
+        "virtual"
       ],
       "correctAnswer": 1
     },
@@ -48,10 +48,10 @@
       "category": "C# Basics",
       "question": "What is the default value of a bool variable in C#?",
       "options": [
-        "true (Boolean defaults to true in C#)",
-        "false (Boolean defaults to false in C#)",
-        "null (Boolean is a reference type and defaults to null)",
-        "0 (Boolean is stored as an integer 0)"
+        "true",
+        "false",
+        "null",
+        "0"
       ],
       "correctAnswer": 1
     },
@@ -60,10 +60,10 @@
       "category": "C# Basics",
       "question": "Which of the following is a value type in C#?",
       "options": [
-        "string (Immutable reference type)",
-        "object (The base class of all types, reference type)",
-        "int (Primitive numeric structure, value type)",
-        "class (User-defined reference type)"
+        "string",
+        "object",
+        "int",
+        "class"
       ],
       "correctAnswer": 2
     },
@@ -108,10 +108,10 @@
       "category": "C# Basics",
       "question": "Which operator is used for null-coalescing in C#?",
       "options": [
-        "?. (Null-conditional operator)",
-        "?? (Null-coalescing operator)",
-        "=> (Lambda operator)",
-        "!= (Inequality operator)"
+        "?.",
+        "??",
+        "=>",
+        "!="
       ],
       "correctAnswer": 1
     },
@@ -254,10 +254,10 @@
       "category": "OOP",
       "question": "What access modifier allows a member to be accessed only within its own class and derived classes?",
       "options": [
-        "private (Only within same class)",
-        "protected (Same class and derived classes)",
-        "internal (Same assembly)",
-        "public (Everywhere)"
+        "private",
+        "protected",
+        "internal",
+        "public"
       ],
       "correctAnswer": 1
     },
@@ -290,10 +290,10 @@
       "category": "Collections",
       "question": "What is a HashSet<T> and when should you use it?",
       "options": [
-        "A collection of key-value pairs, use for caching",
-        "A collection of unique elements, use for high-performance lookups/deduplication",
-        "A sorted list of elements, use when order matters",
-        "A thread-safe list, use in multi-threading"
+        "A collection of key-value pairs",
+        "A collection of unique elements",
+        "A sorted list of elements",
+        "A thread-safe list"
       ],
       "correctAnswer": 1
     },
@@ -362,7 +362,7 @@
       "category": "LINQ",
       "question": "What is the difference between IEnumerable and IQueryable?",
       "options": [
-        "IEnumerable executes in-memory, IQueryable executes on database server (SQL)",
+        "IEnumerable executes in-memory, IQueryable executes on database server",
         "IQueryable executes in-memory, IEnumerable executes on database",
         "There is no difference, they are interchangeable",
         "IEnumerable is for write operations, IQueryable for read operations"
@@ -387,7 +387,7 @@
       "question": "What is deferred execution in LINQ?",
       "options": [
         "The query is executed immediately when defined",
-        "The query is not executed until the result is enumerated (e.g. foreach, ToList)",
+        "The query is not executed until the result is enumerated",
         "The query runs on a background thread",
         "The query is skipped if data is invalid"
       ],
@@ -434,7 +434,7 @@
       "category": "Entity Framework",
       "question": "Explain difference between Eager Loading and Lazy Loading.",
       "options": [
-        "Eager loads related data immediately (Include), Lazy loads on access (virtual)",
+        "Eager loads related data immediately",
         "Lazy loads data immediately, Eager loads on access",
         "Eager loading is obsolete in EF Core",
         "Lazy loading is the default in EF Core"
@@ -471,7 +471,7 @@
       "question": "What does AsNoTracking() do?",
       "options": [
         "Deletes the entity from database without tracking",
-        "Returns entities without attaching to change tracker (Faster reads)",
+        "Returns entities without attaching to change tracker",
         "Disables logging for the query",
         "Prevents other users from tracking the query"
       ],
@@ -495,7 +495,7 @@
       "question": "What does .SaveChanges() do?",
       "options": [
         "Validates the model but doesn't write to DB",
-        "Persists all tracked changes (Insert/Update/Delete) to the database",
+        "Persists all tracked changes to the database",
         "Saves the current transaction to a log file",
         "Downloads the latest data from database"
       ],
@@ -521,7 +521,7 @@
       "question": "What does Include() method do?",
       "options": [
         "Adds a new entity to the context",
-        "Eagerly loads related entities (Joins)",
+        "Eagerly loads related entities",
         "Includes a file in the project",
         "Filters the query results"
       ],
@@ -545,7 +545,7 @@
       "question": "Explain MVC architecture.",
       "options": [
         "Model-View-Component: A pattern for Blazor apps",
-        "Model-View-Controller: Separation of concerns (Data, UI, Logic)",
+        "Model-View-Controller: Separation of concerns",
         "Main-Visual-Code: Organization of project files",
         "Method-Variable-Class: Coding standard"
       ],
@@ -557,7 +557,7 @@
       "question": "What is Dependency Injection (DI)?",
       "options": [
         "Hardcoding dependencies inside classes",
-        "A technique where dependencies are provided to a class (IoC), improving testing and modularity",
+        "A technique where dependencies are provided to a class",
         "Installing NuGet packages",
         "Injecting SQL code into requests"
       ],
@@ -580,10 +580,10 @@
       "category": "ASP.NET Core",
       "question": "Which service lifetime creates a new instance for every request?",
       "options": [
-        "Singleton (One instance forever)",
-        "Scoped (One instance per HTTP request)",
-        "Transient (New instance every time requested)",
-        "Static (Shared globally)"
+        "Singleton",
+        "Scoped",
+        "Transient",
+        "Static"
       ],
       "correctAnswer": 2
     },
@@ -593,7 +593,7 @@
       "question": "What is `appsettings.json` used for?",
       "options": [
         "Storing user passwords",
-        "Application configuration settings (Connection strings, API keys)",
+        "Application configuration settings",
         "Defining HTML structure",
         "Compiling TypeScript"
       ],
@@ -605,7 +605,7 @@
       "question": "How does routing work in Web API?",
       "options": [
         "It maps HTTP requests to file paths on disk",
-        "It maps HTTP requests to Controller actions using templates (e.g., [Route])",
+        "It maps HTTP requests to Controller actions using templates",
         "It maps DNS names to IP addresses",
         "It redirects users to the login page"
       ],
@@ -665,7 +665,7 @@
       "question": "What does HTTP Status Code 200 mean?",
       "options": [
         "Created successfully",
-        "OK - Request succeeded",
+        "OK",
         "Bad Request",
         "Unauthorized"
       ],
@@ -677,7 +677,7 @@
       "question": "What does HTTP Status Code 404 mean?",
       "options": [
         "Forbidden Access",
-        "Not Found - Resource does not exist",
+        "Not Found",
         "Internal Server Error",
         "Moved Permanently"
       ],
@@ -689,7 +689,7 @@
       "question": "What does HTTP Status Code 500 mean?",
       "options": [
         "Bad Gateway",
-        "Internal Server Error - Server failed to process request",
+        "Internal Server Error",
         "Service Unavailable",
         "Conflict"
       ],
@@ -700,7 +700,7 @@
       "category": "REST API",
       "question": "What distinguishes a URI from a URL?",
       "options": [
-        "URI is a resource identifier (supercategory), URL is a location access type of URI",
+        "URI is a resource identifier, URL is a location access type of URI",
         "URL is for websites, URI is for files",
         "They are completely unrelated concepts",
         "URI is deprecated, URL is the modern standard"
@@ -712,9 +712,9 @@
       "category": "REST API",
       "question": "Which is a best practice for RESTful URIs?",
       "options": [
-        "Use verbs in paths (e.g., /createNewUser)",
-        "Use file extensions (e.g., /users.json)",
-        "Use plural nouns (e.g., /users, /orders) and lowercase letters",
+        "Use verbs in paths",
+        "Use file extensions",
+        "Use plural nouns and lowercase letters",
         "Use underscores instead of hyphens"
       ],
       "correctAnswer": 2
@@ -726,7 +726,7 @@
       "options": [
         "REST is XML-only, SOAP is JSON-only",
         "REST is a stateful protocol, SOAP is stateless architecture",
-        "REST is flexible (JSON/XML) architecture, SOAP is strict XML protocol",
+        "REST is flexible architecture, SOAP is strict XML protocol",
         "SOAP is faster than REST"
       ],
       "correctAnswer": 2
@@ -761,7 +761,7 @@
       "question": "What is a Primary Key?",
       "options": [
         "A key used to encrypt the database",
-        "A unique identifier for each record in a table (cannot be null)",
+        "A unique identifier for each record in a table",
         "A link to another table's data",
         "The first column in any table"
       ],
@@ -773,7 +773,7 @@
       "question": "What is Normalization?",
       "options": [
         "Converting data to normal distribution",
-        "Organizing data to reduce redundancy and improve integrity (1NF, 2NF, 3NF)",
+        "Organizing data to reduce redundancy and improve integrity",
         "Backing up data regularly",
         "Writing stored procedures"
       ],
@@ -785,8 +785,8 @@
       "question": "Why use an Index in SQL?",
       "options": [
         "To enforce foreign key constraints",
-        "To speed up data retrieval (SELECT) operations",
-        "To speed up data insertion (INSERT) operations",
+        "To speed up data retrieval operations",
+        "To speed up data insertion operations",
         "To encrypt sensitive columns"
       ],
       "correctAnswer": 1
@@ -808,7 +808,7 @@
       "category": "SQL",
       "question": "How to prevent SQL Injection?",
       "options": [
-        "Use parameterized queries / Prepared Statements",
+        "Use parameterized queries",
         "Use concatenation of strings",
         "Run database as administrator",
         "Disable firewalls"
@@ -870,7 +870,7 @@
       "options": [
         "\"null\"",
         "\"undefined\"",
-        "\"object\" (Historical bug)",
+        "\"object\"",
         "\"number\""
       ],
       "correctAnswer": 2
@@ -881,7 +881,7 @@
       "question": "What is a Closure?",
       "options": [
         "A function that runs instantly",
-        "A function bundled with its lexical environment (access to outer variables)",
+        "A function bundled with its lexical environment",
         "A way to close a window",
         "A loop termination condition"
       ],
@@ -893,7 +893,7 @@
       "question": "Difference between '==' and '==='?",
       "options": [
         "== checks value & type; === checks value only",
-        "== checks value (loose); === checks value & type (strict)",
+        "== checks value; === checks value & type",
         "=== is assignment; == is comparison",
         "There is no difference"
       ],
@@ -931,7 +931,7 @@
       "question": "What is DOM?",
       "options": [
         "Data Object Model",
-        "Document Object Model - Interface for HTML/XML documents",
+        "Document Object Model",
         "Disk Operating Mode",
         "Design of Model"
       ],
@@ -1087,7 +1087,7 @@
       "question": "What is Dependency Injection?",
       "options": [
         "A way to create databases",
-        "A design pattern to implement IoC (Inversion of Control), injecting dependencies from outside",
+        "A design pattern to implement IoC",
         "A testing tool",
         "A compiler feature"
       ],
@@ -1110,8 +1110,8 @@
       "category": "C# Advanced",
       "question": "What are Generic Collections?",
       "options": [
-        "Collections that store any object (ArrayList)",
-        "Collections that are type-safe and performant (List<T>)",
+        "Collections that store any object",
+        "Collections that are type-safe and performant",
         "Collections used only for strings",
         "Collections that are obsolete"
       ],
@@ -1135,7 +1135,7 @@
       "question": "What is Reflection?",
       "options": [
         "Mirroring the screen",
-        "Inspecting/modifying code metadata (types, assemblies) at runtime",
+        "Inspecting or modifying code metadata at runtime",
         "Optimizing performance",
         "Compiling code"
       ],
@@ -1147,7 +1147,7 @@
       "question": "What is a Delegate?",
       "options": [
         "A class pointer",
-        "A type-safe function pointer / reference to a method",
+        "A type-safe function pointer",
         "A variable for numbers",
         "A network protocol"
       ],
@@ -1159,7 +1159,7 @@
       "question": "What are Attributes in C#?",
       "options": [
         "Variables inside a class",
-        "Declarative tags (metadata) conveying runtime info to behaviors (e.g., [Obsolete])",
+        "Declarative tags conveying runtime info to behaviors",
         "Comments in code",
         "Database columns"
       ],
@@ -1207,7 +1207,7 @@
       "question": "What is a Nullable type?",
       "options": [
         "A type that cannot be null",
-        "A value type that can represent null (e.g., int?)",
+        "A value type that can represent null",
         "A dynamic type",
         "A pointer type"
       ],
