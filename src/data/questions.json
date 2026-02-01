@@ -3,6 +3,7 @@
   "company": "VerteX Technologies",
   "description": "100 technical interview questions for Junior .NET Developer position",
   "categoryOrder": [
+    "SQL",
     "C# Basics",
     "OOP",
     "Collections",
@@ -11,10 +12,9 @@
     "Entity Framework",
     "ASP.NET Core",
     "REST API",
-    "SQL",
+    "Design Patterns",
     "JavaScript",
-    "Testing",
-    "Design Patterns"
+    "Testing"
   ],
   "questions": [
     {
