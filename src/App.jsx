@@ -23,9 +23,12 @@ function App() {
     }
   }
 
-  // Get unique categories
+  // Get unique categories sorted by JSON order or alphabetically
   const categories = useMemo(() => {
     const cats = [...new Set(questions.questions.map(q => q.category))]
+    if (questions.categoryOrder) {
+      return ['All', ...questions.categoryOrder.filter(c => cats.includes(c))]
+    }
     return ['All', ...cats.sort()]
   }, [])
 

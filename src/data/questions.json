@@ -1,7 +1,21 @@
 {
   "title": "Junior .NET Developer Technical Assessment",
   "company": "VerteX Technologies",
-  "description": "50 technical interview questions for Junior .NET Developer position",
+  "description": "100 technical interview questions for Junior .NET Developer position",
+  "categoryOrder": [
+    "C# Basics",
+    "OOP",
+    "Collections",
+    "C# Advanced",
+    "LINQ",
+    "Entity Framework",
+    "ASP.NET Core",
+    "REST API",
+    "SQL",
+    "JavaScript",
+    "Testing",
+    "Design Patterns"
+  ],
   "questions": [
     {
       "id": 1,
@@ -9,28 +23,48 @@
       "question": "What will be the output of the following code?",
       "code": "int x = 5;\nint y = x++;\nConsole.WriteLine($\"{x}, {y}\");",
       "codeLanguage": "csharp",
-      "options": ["5, 5", "6, 5", "5, 6", "6, 6"],
+      "options": [
+        "x is 5, y is 5 (Increment happens after assignment)",
+        "x is 6, y is 5 (Post-increment increases x after assignment)",
+        "x is 5, y is 6 (Pre-increment increases x before assignment)",
+        "x is 6, y is 6 (Both variables are incremented simultaneously)"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 2,
       "category": "C# Basics",
       "question": "Which keyword is used to prevent a class from being inherited in C#?",
-      "options": ["static", "sealed", "abstract", "virtual"],
+      "options": [
+        "static (Prevents instantiation but allows inheritance)",
+        "sealed (Explicitly forbids inheritance from this class)",
+        "abstract (Requires inheritance to be used)",
+        "virtual (Allows methods to be overridden in derived classes)"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 3,
       "category": "C# Basics",
       "question": "What is the default value of a bool variable in C#?",
-      "options": ["true", "false", "null", "0"],
+      "options": [
+        "true (Boolean defaults to true in C#)",
+        "false (Boolean defaults to false in C#)",
+        "null (Boolean is a reference type and defaults to null)",
+        "0 (Boolean is stored as an integer 0)"
+      ],
       "correctAnswer": 1
     },
     {
       "id": 4,
       "category": "C# Basics",
       "question": "Which of the following is a value type in C#?",
-      "options": ["string", "object", "int", "class"],
+      "options": [
+        "string (Immutable reference type)",
+        "object (The base class of all types, reference type)",
+        "int (Primitive numeric structure, value type)",
+        "class (User-defined reference type)"
+      ],
       "correctAnswer": 2
     },
     {
@@ -38,125 +72,443 @@
       "category": "C# Basics",
       "question": "What does the 'var' keyword do in C#?",
       "options": [
-        "Creates a dynamic variable",
-        "Creates a variable with implicit typing determined at compile time",
-        "Creates a variable that can hold any type",
-        "Creates a constant variable"
+        "Creates a dynamic variable whose type can change at runtime",
+        "Creates a strongly-typed variable where the type is inferred by the compiler",
+        "Creates a variant type that can hold any data type like object",
+        "Creates a constant variable that cannot be modified after assignment"
       ],
       "correctAnswer": 1
     },
     {
       "id": 6,
-      "category": "OOP",
-      "question": "Which OOP principle allows a child class to provide a specific implementation of a method already defined in its parent class?",
-      "options": ["Encapsulation", "Abstraction", "Polymorphism", "Inheritance"],
-      "correctAnswer": 2
+      "category": "C# Basics",
+      "question": "What is the difference between 'const' and 'readonly'?",
+      "options": [
+        "const is runtime constant, readonly is compile-time constant",
+        "const is compile-time constant, readonly is runtime constant (set in constructor)",
+        "There is no difference, they are synonyms",
+        "readonly can only be used on static fields, const can be used on instance fields"
+      ],
+      "correctAnswer": 1
     },
     {
       "id": 7,
-      "category": "OOP",
-      "question": "What is the difference between 'override' and 'new' keywords when used with methods in C#?",
+      "category": "C# Basics",
+      "question": "What is boxing in C#?",
       "options": [
-        "There is no difference",
-        "'override' replaces the base method, 'new' hides it",
-        "'new' replaces the base method, 'override' hides it",
-        "'override' is for abstract methods only, 'new' is for virtual methods"
+        "Converting a reference type to a value type",
+        "Converting a value type to the object type or any interface it implements",
+        "Encapsulating a field safely within a property",
+        "Allocating memory on the stack for a reference type"
       ],
       "correctAnswer": 1
     },
     {
       "id": 8,
-      "category": "OOP",
-      "question": "What will be the output when the code is executed?",
-      "code": "BaseClass obj = new DerivedClass();\nobj.Print();\n\nclass BaseClass { \n    public virtual void Print() => Console.WriteLine(\"Base\"); \n}\nclass DerivedClass : BaseClass { \n    public new void Print() => Console.WriteLine(\"Derived\"); \n}",
-      "codeLanguage": "csharp",
-      "options": ["Base", "Derived", "Compilation Error", "Runtime Error"],
-      "correctAnswer": 0
+      "category": "C# Basics",
+      "question": "Which operator is used for null-coalescing in C#?",
+      "options": [
+        "?. (Null-conditional operator)",
+        "?? (Null-coalescing operator)",
+        "=> (Lambda operator)",
+        "!= (Inequality operator)"
+      ],
+      "correctAnswer": 1
     },
     {
       "id": 9,
-      "category": "OOP",
-      "question": "Which of the following statements about interfaces in C# is TRUE?",
+      "category": "C# Basics",
+      "question": "What is the correct way to handle exceptions in C#?",
       "options": [
-        "Interfaces can have constructors",
-        "A class can implement only one interface",
-        "Interfaces can have default implementations starting from C# 8.0",
-        "Interface members are private by default"
+        "using - try - catch",
+        "try - catch - finally",
+        "if - else - throw",
+        "do - try - while"
       ],
-      "correctAnswer": 2
+      "correctAnswer": 1
     },
     {
       "id": 10,
-      "category": "OOP",
-      "question": "What is encapsulation in OOP?",
+      "category": "C# Basics",
+      "question": "What is the entry point of a C# console application?",
       "options": [
-        "The ability of objects to take many forms",
-        "Bundling data and methods that operate on that data within a single unit",
-        "Creating new classes from existing ones",
-        "Hiding the complexity of the system"
+        "WinMain method",
+        "Main method (static)",
+        "Start method",
+        "Init method"
       ],
       "correctAnswer": 1
     },
     {
       "id": 11,
-      "category": "ASP.NET Core",
-      "question": "In an ASP.NET Core Web API with the following controller, which action handles GET /api/products/123?",
-      "code": "[Route(\"api/[controller]\")]\npublic class ProductsController : ControllerBase\n{\n    [HttpGet]\n    public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()\n    \n    [HttpGet(\"{id}\")]\n    public async Task<ActionResult<Product>> GetProductById(int id)\n    \n    [HttpPost]\n    public async Task<ActionResult<Product>> CreateProduct(Product p)\n}",
-      "codeLanguage": "csharp",
-      "options": ["GetAllProducts", "GetProductById", "CreateProduct", "None of them"],
-      "correctAnswer": 1
-    },
-    {
-      "id": 12,
-      "category": "ASP.NET Core",
-      "question": "What is the correct HTTP method mapping for RESTful controller actions?",
+      "category": "OOP",
+      "question": "What are the four pillars of Object-Oriented Programming (OOP)?",
       "options": [
-        "Retrieve - HttpPost, Create - HttpGet, Update - HttpDelete, Remove - HttpPut",
-        "Retrieve - HttpGet, Create - HttpPost, Update - HttpPut, Remove - HttpDelete",
-        "Retrieve - HttpPut, Create - HttpPost, Update - HttpGet, Remove - HttpDelete",
-        "Retrieve - HttpDelete, Create - HttpGet, Update - HttpPut, Remove - HttpPost"
+        "Classes, Objects, Methods, Properties",
+        "Abstraction, Encapsulation, Inheritance, Polymorphism",
+        "Interfaces, Abstract Classes, Static Classes, sealed Classes",
+        "Public, Private, Protected, Internal"
       ],
       "correctAnswer": 1
     },
     {
-      "id": 13,
-      "category": "ASP.NET Core",
-      "question": "What is Dependency Injection in ASP.NET Core?",
+      "id": 12,
+      "category": "OOP",
+      "question": "Which OOP principle allows a child class to provide a specific implementation of a method already defined in its parent class?",
       "options": [
-        "A way to inject SQL queries into the database",
-        "A design pattern for achieving Inversion of Control between classes and their dependencies",
-        "A method to inject JavaScript into web pages",
-        "A technique to inject environment variables"
+        "Encapsulation (Hiding internal state)",
+        "Abstraction (Hiding implementation details)",
+        "Polymorphism (Runtime method overriding)",
+        "Inheritance (Acquiring base class members)"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 13,
+      "category": "OOP",
+      "question": "What is the difference between 'override' and 'new' keywords when used with methods in C#?",
+      "options": [
+        "There is no difference functionality-wise",
+        "'override' extends/replaces the base method, 'new' hides it entirely",
+        "'new' extends the base method, 'override' creates a new slot",
+        "'override' is for abstract methods, 'new' is for interfaces"
       ],
       "correctAnswer": 1
     },
     {
       "id": 14,
-      "category": "ASP.NET Core",
-      "question": "Which service lifetime in ASP.NET Core DI creates a new instance for every request?",
-      "options": ["Singleton", "Scoped", "Transient", "Static"],
-      "correctAnswer": 2
+      "category": "OOP",
+      "question": "What will be the output when the code is executed?",
+      "code": "BaseClass obj = new DerivedClass();\nobj.Print();\n\nclass BaseClass { \n    public virtual void Print() => Console.WriteLine(\"Base\"); \n}\nclass DerivedClass : BaseClass { \n    public new void Print() => Console.WriteLine(\"Derived\"); \n}",
+      "codeLanguage": "csharp",
+      "options": [
+        "Base (Method is hidden, reference is BaseClass)",
+        "Derived (Polymorphism dispatches to actual object)",
+        "Compilation Error (Cannot hide virtual methods)",
+        "Runtime Error (Method not found)"
+      ],
+      "correctAnswer": 0
     },
     {
       "id": 15,
-      "category": "ASP.NET Core",
-      "question": "What does middleware do in ASP.NET Core?",
+      "category": "OOP",
+      "question": "Which of the following statements about interfaces in C# is TRUE?",
       "options": [
-        "Manages database connections",
-        "Handles requests and responses in the pipeline",
-        "Compiles C# code",
-        "Manages user sessions only"
+        "Interfaces can contain fields and constructors",
+        "A class can inherit multiple base classes but only one interface",
+        "Interfaces can have default method implementations (since C# 8.0)",
+        "Interface members are private by default"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 16,
+      "category": "OOP",
+      "question": "What is encapsulation?",
+      "options": [
+        "The ability of objects to take many forms",
+        "Bundling data/methods and restricting direct access to object components",
+        "Creating new classes from existing classes",
+        "Defining a blueprint for a class"
       ],
       "correctAnswer": 1
     },
     {
-      "id": 16,
+      "id": 17,
+      "category": "OOP",
+      "question": "What is an abstract class in C#?",
+      "options": [
+        "A class that cannot have any implementation code",
+        "A class that cannot be instantiated and may contain abstract members",
+        "A class that is automatically static and sealed",
+        "A class that must be inherited by structs only"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 18,
+      "category": "OOP",
+      "question": "Difference between Abstract Class and Interface?",
+      "options": [
+        "Abstract class supports multiple inheritance, Interface does not",
+        "Interface supports fields, Abstract class does not",
+        "Abstract class can have state (fields) and constructors, Interface cannot have state",
+        "They are exactly the same in modern C#"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 19,
+      "category": "OOP",
+      "question": "What is the purpose of a constructor?",
+      "options": [
+        "To destroy objects and free memory",
+        "To initialize an object and set initial state",
+        "To copy an object to another variable",
+        "To override parent class methods"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 20,
+      "category": "OOP",
+      "question": "What access modifier allows a member to be accessed only within its own class and derived classes?",
+      "options": [
+        "private (Only within same class)",
+        "protected (Same class and derived classes)",
+        "internal (Same assembly)",
+        "public (Everywhere)"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 21,
+      "category": "Collections",
+      "question": "What is the difference between List<T> and Array?",
+      "options": [
+        "Array is dynamic size, List is fixed size",
+        "List<T> is dynamic size, Array is fixed size",
+        "Array is slower than List<T>",
+        "List<T> can define multiple types, Array only one"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 22,
+      "category": "Collections",
+      "question": "Compare Dictionary<TKey, TValue> vs Hashtable.",
+      "options": [
+        "Dictionary is type-safe (generic), Hashtable stores objects",
+        "Hashtable is type-safe, Dictionary stores objects",
+        "Dictionary allows null keys, Hashtable does not",
+        "Hashtable is faster than Dictionary"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 23,
+      "category": "Collections",
+      "question": "What is a HashSet<T> and when should you use it?",
+      "options": [
+        "A collection of key-value pairs, use for caching",
+        "A collection of unique elements, use for high-performance lookups/deduplication",
+        "A sorted list of elements, use when order matters",
+        "A thread-safe list, use in multi-threading"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 24,
+      "category": "Collections",
+      "question": "Which collection represents a First-In-First-Out (FIFO) structure?",
+      "options": [
+        "Stack",
+        "Queue",
+        "List",
+        "Dictionary"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 25,
+      "category": "Collections",
+      "question": "Which interface is the base for all non-generic collections?",
+      "options": [
+        "IEnumerable",
+        "ICollection",
+        "IList",
+        "IDictionary"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 26,
+      "category": "Collections",
+      "question": "Which collection is best for Last-In-First-Out (LIFO) behavior?",
+      "options": [
+        "Queue",
+        "Stack",
+        "LinkedList",
+        "HashSet"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 27,
+      "category": "Collections",
+      "question": "What happens if you try to add a duplicate key to a Dictionary?",
+      "options": [
+        "It overwrites the existing value",
+        "It throws an ArgumentException",
+        "It ignores the new entry",
+        "It creates a second entry with the same key"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 28,
+      "category": "LINQ",
+      "question": "What is LINQ in C#?",
+      "options": [
+        "A database management system like SQL Server",
+        "Language Integrated Query - syntax to query data from collections, DBs, XML",
+        "A library for networking and HTTP requests",
+        "A testing framework for unit tests"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 29,
+      "category": "LINQ",
+      "question": "What is the difference between IEnumerable and IQueryable?",
+      "options": [
+        "IEnumerable executes in-memory, IQueryable executes on database server (SQL)",
+        "IQueryable executes in-memory, IEnumerable executes on database",
+        "There is no difference, they are interchangeable",
+        "IEnumerable is for write operations, IQueryable for read operations"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 30,
+      "category": "LINQ",
+      "question": "Which LINQ method is used to project valid into a new form?",
+      "options": [
+        "Where",
+        "Select",
+        "OrderBy",
+        "GroupBy"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 31,
+      "category": "LINQ",
+      "question": "What is deferred execution in LINQ?",
+      "options": [
+        "The query is executed immediately when defined",
+        "The query is not executed until the result is enumerated (e.g. foreach, ToList)",
+        "The query runs on a background thread",
+        "The query is skipped if data is invalid"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 32,
+      "category": "LINQ",
+      "question": "Which LINQ method returns the first element or a default value if empty?",
+      "options": [
+        "First()",
+        "FirstOrDefault()",
+        "Single()",
+        "SingleOrDefault()"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 33,
+      "category": "LINQ",
+      "question": "How do you filter a collection using LINQ?",
+      "options": [
+        "Using .Select() method",
+        "Using .Where() method",
+        "Using .Filter() method",
+        "Using .Map() method"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 34,
       "category": "Entity Framework",
-      "question": "Which LINQ method should you use to filter products with price greater than a specified value?",
-      "code": "// Option A:\nvar products = dbContext.Products.FindAll(p => p.Price > value).ToList();\n\n// Option B:\nvar products = dbContext.Products.Filter(p => p.Price > value).ToList();\n\n// Option C:\nvar products = dbContext.Products.Select(p => p.Price > value).ToList();\n\n// Option D:\nvar products = dbContext.Products.Where(p => p.Price > value).ToList();",
+      "question": "What is a DbContext?",
+      "options": [
+        "A configuration file for database connection strings",
+        "A session with the database ensuring UoW and repository pattern",
+        "A tool for migrating SQL scripts",
+        "A representation of a single database table"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 35,
+      "category": "Entity Framework",
+      "question": "Explain difference between Eager Loading and Lazy Loading.",
+      "options": [
+        "Eager loads related data immediately (Include), Lazy loads on access (virtual)",
+        "Lazy loads data immediately, Eager loads on access",
+        "Eager loading is obsolete in EF Core",
+        "Lazy loading is the default in EF Core"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 36,
+      "category": "Entity Framework",
+      "question": "What is a Migration in EF Core?",
+      "options": [
+        "Moving data from one server to another",
+        "Code file representing changes to database schema to match C# model",
+        "A runtime error when schema doesn't match",
+        "A backup of the database"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 37,
+      "category": "Entity Framework",
+      "question": "Which approach allows defining schema using C# classes?",
+      "options": [
+        "Database-First",
+        "Schema-First",
+        "Code-First",
+        "Model-First"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 38,
+      "category": "Entity Framework",
+      "question": "What does AsNoTracking() do?",
+      "options": [
+        "Deletes the entity from database without tracking",
+        "Returns entities without attaching to change tracker (Faster reads)",
+        "Disables logging for the query",
+        "Prevents other users from tracking the query"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 39,
+      "category": "Entity Framework",
+      "question": "How to perform a logical delete (Soft Delete)?",
+      "options": [
+        "Use .Remove() method on the DbSet",
+        "Add an IsDeleted flag and filter queries globally",
+        "Use SQL TRUNCATE command",
+        "Delete the row and move it to a history table"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 40,
+      "category": "Entity Framework",
+      "question": "What does .SaveChanges() do?",
+      "options": [
+        "Validates the model but doesn't write to DB",
+        "Persists all tracked changes (Insert/Update/Delete) to the database",
+        "Saves the current transaction to a log file",
+        "Downloads the latest data from database"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 41,
+      "category": "Entity Framework",
+      "question": "Which LINQ method filters products by price?",
+      "code": "// Option D:\nvar products = dbContext.Products.Where(p => p.Price > value).ToList();",
       "codeLanguage": "csharp",
       "options": [
-        "FindAll(p => p.Price > value)",
+        "Find(p => p.Price > value)",
         "Filter(p => p.Price > value)",
         "Select(p => p.Price > value)",
         "Where(p => p.Price > value)"
@@ -164,381 +516,714 @@
       "correctAnswer": 3
     },
     {
-      "id": 17,
+      "id": 42,
       "category": "Entity Framework",
-      "question": "What is a DbContext in Entity Framework Core?",
+      "question": "What does Include() method do?",
       "options": [
-        "A database connection string",
-        "A session with the database that allows querying and saving data",
-        "A SQL query builder",
-        "A database migration tool"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 18,
-      "category": "Entity Framework",
-      "question": "What does the Include() method do in Entity Framework Core?",
-      "options": [
-        "Includes a new table in the database",
-        "Eagerly loads related entities",
-        "Includes a new column in a table",
+        "Adds a new entity to the context",
+        "Eagerly loads related entities (Joins)",
+        "Includes a file in the project",
         "Filters the query results"
       ],
       "correctAnswer": 1
     },
     {
-      "id": 19,
-      "category": "Entity Framework",
-      "question": "Which approach in Entity Framework Core allows you to define the database schema using C# classes?",
-      "options": ["Database-First", "Schema-First", "Code-First", "Model-First"],
-      "correctAnswer": 2
-    },
-    {
-      "id": 20,
-      "category": "Entity Framework",
-      "question": "What is lazy loading in Entity Framework Core?",
-      "options": [
-        "Loading all data at once",
-        "Loading related entities only when they are accessed",
-        "Loading data in batches",
-        "Not loading any data"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 21,
-      "category": "SQL",
-      "question": "In a query with INNER JOIN between Users and Projects tables, how many table scans are performed at minimum?",
-      "code": "SELECT U.FirstName \nFROM Users U \nINNER JOIN Projects P ON U.Id = P.CreatedBy \nWHERE U.Email <> @email AND P.Id = @projectId",
-      "codeLanguage": "sql",
-      "options": ["1", "2", "3", "0"],
-      "correctAnswer": 1
-    },
-    {
-      "id": 22,
-      "category": "SQL",
-      "question": "What is the difference between INNER JOIN and LEFT JOIN?",
-      "options": [
-        "No difference",
-        "INNER JOIN returns only matching rows, LEFT JOIN returns all rows from left table",
-        "LEFT JOIN returns only matching rows, INNER JOIN returns all rows",
-        "INNER JOIN is faster than LEFT JOIN"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 23,
-      "category": "SQL",
-      "question": "What does the UNION operator do in SQL?",
-      "options": [
-        "Joins two tables horizontally",
-        "Combines results of two queries and removes duplicates",
-        "Multiplies results of two queries",
-        "Divides results of two queries"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 24,
-      "category": "SQL",
-      "question": "Which constraint ensures that a column cannot have NULL values?",
-      "options": ["UNIQUE", "PRIMARY KEY", "NOT NULL", "FOREIGN KEY"],
-      "correctAnswer": 2
-    },
-    {
-      "id": 25,
-      "category": "SQL",
-      "question": "What is a PRIMARY KEY in SQL?",
-      "options": [
-        "A key that can have duplicate values",
-        "A unique identifier for each record in a table",
-        "A key that references another table",
-        "A key that allows NULL values"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 26,
-      "category": "JavaScript",
-      "question": "What will be the output?",
-      "code": "function createMultiplier(factor) {\n  return function(number) {\n    return number * factor;\n  };\n}\n\nconst multiplyByTwo = createMultiplier(2);\nconst multiplyByFive = createMultiplier(5);\n\nconsole.log(multiplyByTwo(3), multiplyByFive(4), multiplyByTwo(1));",
-      "codeLanguage": "javascript",
-      "options": ["8, 25, 1", "6, 20, 2", "6, 20, 1", "8, 25, 2"],
-      "correctAnswer": 1
-    },
-    {
-      "id": 27,
-      "category": "JavaScript",
-      "question": "What is a closure in JavaScript?",
-      "options": [
-        "A way to close the browser",
-        "A function that has access to variables from its outer scope even after the outer function has returned",
-        "A method to close database connections",
-        "A way to end a loop"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 28,
-      "category": "JavaScript",
-      "question": "What is the difference between '==' and '===' in JavaScript?",
-      "options": [
-        "No difference",
-        "'==' compares with type coercion, '===' compares without type coercion",
-        "'===' is deprecated",
-        "'==' is for strings only"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 29,
-      "category": "JavaScript",
-      "question": "What does 'async/await' do in JavaScript?",
-      "options": [
-        "Makes code run faster",
-        "Allows writing asynchronous code in a synchronous style",
-        "Creates multiple threads",
-        "Stops code execution"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 30,
-      "category": "JavaScript",
-      "question": "What is the output of this code?",
-      "code": "console.log(typeof null);",
-      "codeLanguage": "javascript",
-      "options": ["null", "undefined", "object", "NaN"],
-      "correctAnswer": 2
-    },
-    {
-      "id": 31,
-      "category": "Design Patterns",
-      "question": "What design pattern is used when you have an interface with multiple implementations and you select one at runtime based on conditions?",
-      "code": "interface ITestInterface {\n    bool CanProcessDocument(Document doc);\n    void Process(Document doc);\n}\n\nforeach (var item in implementations) {\n    if (item.CanProcessDocument(doc)) {\n        item.Process(doc);\n    }\n}",
-      "codeLanguage": "csharp",
-      "options": ["Template Method", "Decorator", "Proxy", "Strategy"],
-      "correctAnswer": 3
-    },
-    {
-      "id": 32,
-      "category": "Design Patterns",
-      "question": "What pattern is used when wrapping an object to add new behavior without modifying the original class?",
-      "code": "public class TrimmedTextProcessor : ITextProcessor {\n    private readonly ITextProcessor _processor;\n    \n    public string Process(string input) => _processor.Process(input.Trim());\n}",
-      "codeLanguage": "csharp",
-      "options": ["Strategy", "Decorator", "Singleton", "Factory"],
-      "correctAnswer": 1
-    },
-    {
-      "id": 33,
-      "category": "Design Patterns",
-      "question": "Which pattern ensures a class has only one instance and provides a global point of access to it?",
-      "options": ["Factory", "Builder", "Singleton", "Prototype"],
-      "correctAnswer": 2
-    },
-    {
-      "id": 34,
-      "category": "Design Patterns",
-      "question": "What is the Repository pattern used for?",
-      "options": [
-        "Managing user authentication",
-        "Abstracting data access logic from business logic",
-        "Creating database tables",
-        "Handling HTTP requests"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 35,
-      "category": "Design Patterns",
-      "question": "What is Dependency Injection pattern?",
-      "options": [
-        "Injecting SQL into queries",
-        "A technique where an object receives its dependencies from external sources",
-        "A pattern for creating singletons",
-        "A method for database injection"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 36,
-      "category": "C# Advanced",
-      "question": "Which default delegate type does NOT exist in C#?",
-      "options": ["Action", "Action<T>", "Predicate<T>", "All of them exist in C#"],
-      "correctAnswer": 3
-    },
-    {
-      "id": 37,
-      "category": "C# Advanced",
-      "question": "What is the purpose of the 'yield' keyword in C#?",
-      "options": [
-        "To pause thread execution",
-        "To return elements one at a time from an iterator method",
-        "To yield priority to other processes",
-        "To break out of a loop"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 38,
-      "category": "C# Advanced",
-      "question": "What will be the output of this code?",
-      "code": "public static IEnumerable<int> YieldExample() {\n    for (int i = 0; i < 2; i++) {\n        Console.WriteLine($\"YieldExample {i}\");\n        yield return i;\n    }\n}\n\nforeach (var i in YieldExample().Select(i => $\"Number: {i}\"))\n    Console.WriteLine(i);",
-      "codeLanguage": "csharp",
-      "options": [
-        "YieldExample 0, YieldExample 1, Number: 0, Number: 1",
-        "YieldExample 0, Number: 0, YieldExample 1, Number: 1",
-        "Number: 0, Number: 1, YieldExample 0, YieldExample 1",
-        "Number: 0, YieldExample 0, Number: 1, YieldExample 1"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 39,
-      "category": "C# Advanced",
-      "question": "What is the difference between 'ref' and 'out' parameters?",
-      "options": [
-        "No difference",
-        "'ref' requires initialization before passing, 'out' must be assigned before method returns",
-        "'out' requires initialization before passing, 'ref' must be assigned before method returns",
-        "'ref' is for value types only"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 40,
-      "category": "C# Advanced",
-      "question": "What is the purpose of the 'using' statement in C#?",
-      "options": [
-        "To import namespaces only",
-        "To ensure proper disposal of IDisposable objects",
-        "To create aliases for types only",
-        "To define constants"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 41,
-      "category": "ASP.NET Core",
-      "question": "What is the purpose of appsettings.json in ASP.NET Core?",
-      "options": [
-        "To store compiled code",
-        "To store configuration settings for the application",
-        "To define routing rules",
-        "To store user data"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "id": 42,
-      "category": "ASP.NET Core",
-      "question": "How do you return a 404 Not Found response from an ASP.NET Core controller action?",
-      "code": "// Which one is correct?\n\n// A:\nreturn NotFound();\n\n// B:\nreturn Error(404);\n\n// C:\nthrow new NotFoundException();\n\n// D:\nreturn StatusCode(-1);",
-      "codeLanguage": "csharp",
-      "options": [
-        "return NotFound();",
-        "return Error(404);",
-        "throw new NotFoundException();",
-        "return StatusCode(-1);"
-      ],
-      "correctAnswer": 0
-    },
-    {
       "id": 43,
-      "category": "Entity Framework",
-      "question": "What is a migration in Entity Framework Core?",
+      "category": "ASP.NET Core",
+      "question": "What is ASP.NET Core?",
       "options": [
-        "Moving the database to another server",
-        "A way to incrementally update the database schema to match the data model",
-        "Copying data between tables",
-        "Backing up the database"
+        "A legacy framework for Windows-only web apps",
+        "A cross-platform, high-performance, open-source framework for building modern cloud-based apps",
+        "A CMS system like WordPress",
+        "A frontend library like React"
       ],
       "correctAnswer": 1
     },
     {
       "id": 44,
-      "category": "Entity Framework",
-      "question": "What does AsNoTracking() do in Entity Framework Core?",
+      "category": "ASP.NET Core",
+      "question": "Explain MVC architecture.",
       "options": [
-        "Deletes tracking data from the database",
-        "Returns entities without change tracking for read-only scenarios",
-        "Disables all database queries",
-        "Removes foreign key relationships"
+        "Model-View-Component: A pattern for Blazor apps",
+        "Model-View-Controller: Separation of concerns (Data, UI, Logic)",
+        "Main-Visual-Code: Organization of project files",
+        "Method-Variable-Class: Coding standard"
       ],
       "correctAnswer": 1
     },
     {
       "id": 45,
-      "category": "SQL",
-      "question": "What is an index in SQL?",
+      "category": "ASP.NET Core",
+      "question": "What is Dependency Injection (DI)?",
       "options": [
-        "A primary key",
-        "A data structure that improves the speed of data retrieval",
-        "A type of constraint",
-        "A backup mechanism"
+        "Hardcoding dependencies inside classes",
+        "A technique where dependencies are provided to a class (IoC), improving testing and modularity",
+        "Installing NuGet packages",
+        "Injecting SQL code into requests"
       ],
       "correctAnswer": 1
     },
     {
       "id": 46,
-      "category": "SQL",
-      "question": "What is the difference between DELETE and TRUNCATE?",
+      "category": "ASP.NET Core",
+      "question": "What is Middleware in ASP.NET Core?",
       "options": [
-        "No difference",
-        "DELETE can have WHERE clause and is logged, TRUNCATE removes all rows and is minimally logged",
-        "TRUNCATE can have WHERE clause, DELETE cannot",
-        "DELETE is faster than TRUNCATE"
+        "A background service for Windows",
+        "Software components assembled into an app pipeline to handle requests and responses",
+        "The database layer",
+        "Frontend JavaScript code"
       ],
       "correctAnswer": 1
     },
     {
       "id": 47,
-      "category": "OOP",
-      "question": "What is an abstract class in C#?",
+      "category": "ASP.NET Core",
+      "question": "Which service lifetime creates a new instance for every request?",
       "options": [
-        "A class that cannot have any methods",
-        "A class that cannot be instantiated and may contain abstract members",
-        "A class that can only have static methods",
-        "A class that must be sealed"
+        "Singleton (One instance forever)",
+        "Scoped (One instance per HTTP request)",
+        "Transient (New instance every time requested)",
+        "Static (Shared globally)"
       ],
-      "correctAnswer": 1
+      "correctAnswer": 2
     },
     {
       "id": 48,
-      "category": "Testing",
-      "question": "What is unit testing?",
+      "category": "ASP.NET Core",
+      "question": "What is `appsettings.json` used for?",
       "options": [
-        "Testing the entire application",
-        "Testing individual units or components of code in isolation",
-        "Testing the user interface",
-        "Testing database performance"
+        "Storing user passwords",
+        "Application configuration settings (Connection strings, API keys)",
+        "Defining HTML structure",
+        "Compiling TypeScript"
       ],
       "correctAnswer": 1
     },
     {
       "id": 49,
-      "category": "Testing",
-      "question": "What is the AAA pattern in unit testing?",
+      "category": "ASP.NET Core",
+      "question": "How does routing work in Web API?",
       "options": [
-        "Assert, Act, Arrange",
-        "Arrange, Act, Assert",
-        "Act, Arrange, Assert",
-        "Always Automate All"
+        "It maps HTTP requests to file paths on disk",
+        "It maps HTTP requests to Controller actions using templates (e.g., [Route])",
+        "It maps DNS names to IP addresses",
+        "It redirects users to the login page"
       ],
       "correctAnswer": 1
     },
     {
       "id": 50,
-      "category": "C# Advanced",
-      "question": "What is LINQ in C#?",
+      "category": "ASP.NET Core",
+      "question": "How to return a 404 response?",
       "options": [
-        "A database management system",
-        "Language Integrated Query - a query syntax for collections and data sources",
-        "A web framework",
-        "A testing library"
+        "return NotFound();",
+        "return new Error(404);",
+        "throw new FileNotFoundException();",
+        "return StatusCode(0);"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 51,
+      "category": "REST API",
+      "question": "How are REST APIs stateless?",
+      "options": [
+        "They maintain user sessions in server memory",
+        "Client state is not stored on server; each request contains all info needed to process it",
+        "They update the database state frequently",
+        "They use stateless socket connections"
       ],
       "correctAnswer": 1
+    },
+    {
+      "id": 52,
+      "category": "REST API",
+      "question": "Which HTTP method is used to CREATE a resource?",
+      "options": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 53,
+      "category": "REST API",
+      "question": "Which HTTP method is used to UPDATE an existing resource?",
+      "options": [
+        "POST",
+        "PUT",
+        "GET",
+        "TRACE"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 54,
+      "category": "REST API",
+      "question": "What does HTTP Status Code 200 mean?",
+      "options": [
+        "Created successfully",
+        "OK - Request succeeded",
+        "Bad Request",
+        "Unauthorized"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 55,
+      "category": "REST API",
+      "question": "What does HTTP Status Code 404 mean?",
+      "options": [
+        "Forbidden Access",
+        "Not Found - Resource does not exist",
+        "Internal Server Error",
+        "Moved Permanently"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 56,
+      "category": "REST API",
+      "question": "What does HTTP Status Code 500 mean?",
+      "options": [
+        "Bad Gateway",
+        "Internal Server Error - Server failed to process request",
+        "Service Unavailable",
+        "Conflict"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 57,
+      "category": "REST API",
+      "question": "What distinguishes a URI from a URL?",
+      "options": [
+        "URI is a resource identifier (supercategory), URL is a location access type of URI",
+        "URL is for websites, URI is for files",
+        "They are completely unrelated concepts",
+        "URI is deprecated, URL is the modern standard"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 58,
+      "category": "REST API",
+      "question": "Which is a best practice for RESTful URIs?",
+      "options": [
+        "Use verbs in paths (e.g., /createNewUser)",
+        "Use file extensions (e.g., /users.json)",
+        "Use plural nouns (e.g., /users, /orders) and lowercase letters",
+        "Use underscores instead of hyphens"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 59,
+      "category": "REST API",
+      "question": "What is the key difference between REST and SOAP?",
+      "options": [
+        "REST is XML-only, SOAP is JSON-only",
+        "REST is a stateful protocol, SOAP is stateless architecture",
+        "REST is flexible (JSON/XML) architecture, SOAP is strict XML protocol",
+        "SOAP is faster than REST"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 60,
+      "category": "REST API",
+      "question": "Can Ajax replace REST?",
+      "options": [
+        "Yes, Ajax is a newer version of REST",
+        "No, Ajax is a client-side technique to make requests; REST is the server architecture",
+        "Yes, but only for mobile apps",
+        "No, REST is for databases only"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 61,
+      "category": "SQL",
+      "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+      "options": [
+        "No difference, they are synonyms",
+        "INNER JOIN returns only matching rows; LEFT JOIN returns all left rows + matches",
+        "LEFT JOIN returns matches only; INNER JOIN returns all rows",
+        "INNER JOIN keeps nulls, LEFT JOIN discards them"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 62,
+      "category": "SQL",
+      "question": "What is a Primary Key?",
+      "options": [
+        "A key used to encrypt the database",
+        "A unique identifier for each record in a table (cannot be null)",
+        "A link to another table's data",
+        "The first column in any table"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 63,
+      "category": "SQL",
+      "question": "What is Normalization?",
+      "options": [
+        "Converting data to normal distribution",
+        "Organizing data to reduce redundancy and improve integrity (1NF, 2NF, 3NF)",
+        "Backing up data regularly",
+        "Writing stored procedures"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 64,
+      "category": "SQL",
+      "question": "Why use an Index in SQL?",
+      "options": [
+        "To enforce foreign key constraints",
+        "To speed up data retrieval (SELECT) operations",
+        "To speed up data insertion (INSERT) operations",
+        "To encrypt sensitive columns"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 65,
+      "category": "SQL",
+      "question": "What is SQL Injection?",
+      "options": [
+        "A way to speed up queries",
+        "A security vulnerability where malicious SQL is inserted into input fields",
+        "Injecting dependency into SQL server",
+        "A database installation method"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 66,
+      "category": "SQL",
+      "question": "How to prevent SQL Injection?",
+      "options": [
+        "Use parameterized queries / Prepared Statements",
+        "Use concatenation of strings",
+        "Run database as administrator",
+        "Disable firewalls"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 67,
+      "category": "SQL",
+      "question": "In a query with INNER JOIN, how many table scans are minimum performed?",
+      "options": [
+        "Zero scans (Index seek only)",
+        "1 scan",
+        "2 scans (one for each table in worst case)",
+        "Unlimited scans"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 68,
+      "category": "SQL",
+      "question": "Difference between Delete and Truncate?",
+      "options": [
+        "Delete is logged and allows WHERE; Truncate is faster/minimal logging, resets identity",
+        "Truncate allows WHERE clause, Delete does not",
+        "Delete drops the table structure, Truncate keeps it",
+        "Truncate is reversible, Delete is permanent"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 69,
+      "category": "SQL",
+      "question": "Which constraint ensures non-null values?",
+      "options": [
+        "UNIQUE",
+        "CHECK",
+        "NOT NULL",
+        "DEFAULT"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 70,
+      "category": "SQL",
+      "question": "What does UNION operator do?",
+      "options": [
+        "Joins tables horizontally (Add columns)",
+        "Combines result sets vertically (Add rows) and removes duplicates",
+        "Combines result sets and keeps duplicates (UNION ALL)",
+        "Intersects two result sets"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 71,
+      "category": "JavaScript",
+      "question": "Output of: console.log(typeof null);",
+      "options": [
+        "\"null\"",
+        "\"undefined\"",
+        "\"object\" (Historical bug)",
+        "\"number\""
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 72,
+      "category": "JavaScript",
+      "question": "What is a Closure?",
+      "options": [
+        "A function that runs instantly",
+        "A function bundled with its lexical environment (access to outer variables)",
+        "A way to close a window",
+        "A loop termination condition"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 73,
+      "category": "JavaScript",
+      "question": "Difference between '==' and '==='?",
+      "options": [
+        "== checks value & type; === checks value only",
+        "== checks value (loose); === checks value & type (strict)",
+        "=== is assignment; == is comparison",
+        "There is no difference"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 74,
+      "category": "JavaScript",
+      "question": "What is async/await?",
+      "options": [
+        "Syntax for writing asynchronous code that looks synchronous",
+        "A method to pause the server",
+        "A multithreading library",
+        "A way to compile JavaScript"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 75,
+      "category": "JavaScript",
+      "question": "Output of multiplier code?",
+      "code": "const mul = x => y => x * y;\nconsole.log(mul(2)(3));",
+      "codeLanguage": "javascript",
+      "options": [
+        "5",
+        "6",
+        "undefined",
+        "Error"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 76,
+      "category": "JavaScript",
+      "question": "What is DOM?",
+      "options": [
+        "Data Object Model",
+        "Document Object Model - Interface for HTML/XML documents",
+        "Disk Operating Mode",
+        "Design of Model"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 77,
+      "category": "JavaScript",
+      "question": "What is the event loop?",
+      "options": [
+        "A mechanism to handle synchronous code",
+        "A mechanism that handles async callbacks/promises in non-blocking I/O",
+        "An infinite while loop in the code",
+        "A DOM event trigger"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 78,
+      "category": "JavaScript",
+      "question": "Which keyword defines a constant in JS?",
+      "options": [
+        "var",
+        "let",
+        "const",
+        "final"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 79,
+      "category": "JavaScript",
+      "question": "What is a Promise?",
+      "options": [
+        "A guarantee that code will not fail",
+        "An object representing the completion/failure of an async operation",
+        "A strict variable type",
+        "A function callback"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 80,
+      "category": "JavaScript",
+      "question": "How to convert JSON string to object?",
+      "options": [
+        "JSON.stringify()",
+        "JSON.parse()",
+        "JSON.toObject()",
+        "JSON.convert()"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 81,
+      "category": "Testing",
+      "question": "What is Unit Testing?",
+      "options": [
+        "Testing the interaction between modules",
+        "Testing individual units/components in isolation",
+        "Testing the UI manually",
+        "Stress testing the server"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 82,
+      "category": "Testing",
+      "question": "What is the AAA pattern?",
+      "options": [
+        "Assemble, Ask, Answer",
+        "Arrange, Act, Assert",
+        "Apply, Accept, Audit",
+        "Automate, Analyze, Approve"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 83,
+      "category": "Testing",
+      "question": "What is Mocking?",
+      "options": [
+        "Making fun of code",
+        "Simulating the behavior of real objects/dependencies in tests",
+        "Testing without any tools",
+        "Compiling code for production"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 84,
+      "category": "Testing",
+      "question": "What is the goal of Integration Testing?",
+      "options": [
+        "To test individual methods",
+        "To verify that different modules/services work together correctly",
+        "To check css styles",
+        "To check performance under load"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 85,
+      "category": "Testing",
+      "question": "Which attribute identifies a test method in NUnit/xUnit?",
+      "options": [
+        "[Test] / [Fact]",
+        "[Run]",
+        "[Debug]",
+        "[Main]"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 86,
+      "category": "Design Patterns",
+      "question": "What is the Singleton Pattern?",
+      "options": [
+        "Ensures a class has only one instance and provides global access",
+        "Creates objects without specifying exact class",
+        "Separates abstraction from implementation",
+        "Defines a family of algorithms"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 87,
+      "category": "Design Patterns",
+      "question": "What is the Factory Pattern?",
+      "options": [
+        "Ensures one instance exists",
+        "Defines an interface for creating objects, letting subclasses decide which to instantiate",
+        "Attaches responsibilities dynamically",
+        "Provides a simplified interface to a complex system"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 88,
+      "category": "Design Patterns",
+      "question": "What is the Strategy Pattern?",
+      "options": [
+        "Defines a skeleton of an algorithm",
+        "Defines a family of algorithms, encapsulates each one, and makes them interchangeable",
+        "Restricts object creation",
+        "Notifies observers of state changes"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 89,
+      "category": "Design Patterns",
+      "question": "What is Dependency Injection?",
+      "options": [
+        "A way to create databases",
+        "A design pattern to implement IoC (Inversion of Control), injecting dependencies from outside",
+        "A testing tool",
+        "A compiler feature"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 90,
+      "category": "Design Patterns",
+      "question": "What is the Repository Pattern?",
+      "options": [
+        "A version control system",
+        "Abstraction layer between data access and business logic",
+        "A factory for creating objects",
+        "A database backup strategy"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 91,
+      "category": "C# Advanced",
+      "question": "What are Generic Collections?",
+      "options": [
+        "Collections that store any object (ArrayList)",
+        "Collections that are type-safe and performant (List<T>)",
+        "Collections used only for strings",
+        "Collections that are obsolete"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 92,
+      "category": "C# Advanced",
+      "question": "What does the 'yield return' statement do?",
+      "options": [
+        "Returns a value and terminates the method",
+        "Returns an element to an iterator and saves current state for next call",
+        "Throws an exception",
+        "Returns a promise"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 93,
+      "category": "C# Advanced",
+      "question": "What is Reflection?",
+      "options": [
+        "Mirroring the screen",
+        "Inspecting/modifying code metadata (types, assemblies) at runtime",
+        "Optimizing performance",
+        "Compiling code"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 94,
+      "category": "C# Advanced",
+      "question": "What is a Delegate?",
+      "options": [
+        "A class pointer",
+        "A type-safe function pointer / reference to a method",
+        "A variable for numbers",
+        "A network protocol"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 95,
+      "category": "C# Advanced",
+      "question": "What are Attributes in C#?",
+      "options": [
+        "Variables inside a class",
+        "Declarative tags (metadata) conveying runtime info to behaviors (e.g., [Obsolete])",
+        "Comments in code",
+        "Database columns"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 96,
+      "category": "C# Advanced",
+      "question": "What is the difference between Task and Thread?",
+      "options": [
+        "Task is heavier than Thread",
+        "Thread is a lower-level OS concept; Task is a higher-level abstraction managed by ThreadPool",
+        "No difference",
+        "Task cannot run in parallel"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 97,
+      "category": "C# Advanced",
+      "question": "What is Exception Handling best practice?",
+      "options": [
+        "Catch(Exception e) for everything",
+        "Catch specific exceptions first, then general Exception; use finally for cleanup",
+        "Never use try/catch",
+        "Throw exceptions to the user UI directly"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 98,
+      "category": "C# Advanced",
+      "question": "What is string interpolation?",
+      "options": [
+        "Adding strings with +",
+        "Using $\"Hello {name}\" syntax",
+        "Using StringBuilder",
+        "Using String.Format"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 99,
+      "category": "C# Advanced",
+      "question": "What is a Nullable type?",
+      "options": [
+        "A type that cannot be null",
+        "A value type that can represent null (e.g., int?)",
+        "A dynamic type",
+        "A pointer type"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 100,
+      "category": "C# Advanced",
+      "question": "What is the purpose of 'using' directive vs 'using' statement?",
+      "options": [
+        "Directive imports namespaces; Statement defines a scope for IDisposable objects",
+        "They are the same thing",
+        "Directive is for C++, Statement is for C#",
+        "Directive is for memory, Statement is for imports"
+      ],
+      "correctAnswer": 0
     }
   ]
 }
