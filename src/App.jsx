@@ -25,21 +25,85 @@ function App() {
 
   // Get unique categories sorted by JSON order or alphabetically
   const categories = useMemo(() => {
-    const cats = [...new Set(questions.questions.map(q => q.category))]
+    const cats = [...new Set(questions.questions.map(q => q.category || 'Other'))]
+    
     if (questions.categoryOrder) {
-      return ['All', ...questions.categoryOrder.filter(c => cats.includes(c))]
+      // Categories explicitly in order
+      const ordered = questions.categoryOrder.filter(c => cats.includes(c))
+      // Categories NOT in order (append alphabetically)
+      const others = cats.filter(c => !questions.categoryOrder.includes(c)).sort()
+      
+      return ['All', ...ordered, ...others]
     }
+    
     return ['All', ...cats.sort()]
   }, [])
 
-  // Filter questions based on search and category
+  // Calculate global display IDs based on the "All" sorted order
+  const displayIdMap = useMemo(() => {
+    // 1. Get all questions with normalized category
+    let all = questions.questions.map(q => ({
+       ...q, 
+       category: q.category || 'Other' 
+    }))
+
+    // 2. Sort them exactly how "All" view does
+    if (questions.categoryOrder) {
+      all.sort((a, b) => {
+        const catA = a.category
+        const catB = b.category
+        if (catA === catB) return 0
+        
+        const indexA = questions.categoryOrder.indexOf(catA)
+        const indexB = questions.categoryOrder.indexOf(catB)
+        
+        if (indexA !== -1 && indexB !== -1) return indexA - indexB
+        if (indexA !== -1) return -1
+        if (indexB !== -1) return 1
+        return catA.localeCompare(catB)
+      })
+    }
+    
+    // 3. Create map: realId -> displayIndex (1-based)
+    const map = {}
+    all.forEach((q, index) => {
+      map[q.id] = index + 1
+    })
+    return map
+  }, []) // Empty dependency array as questions.json is static
+
+  // Filter and sort questions based on search and category
   const filteredQuestions = useMemo(() => {
-    return questions.questions.filter(q => {
+    // 1. Normalize and Filter
+    let result = questions.questions.map(q => ({
+      ...q,
+      category: q.category || 'Other'
+    })).filter(q => {
       const matchesSearch = q.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            (q.code && q.code.toLowerCase().includes(searchTerm.toLowerCase()))
       const matchesCategory = selectedCategory === 'All' || q.category === selectedCategory
       return matchesSearch && matchesCategory
     })
+
+    // 2. Sort result if 'All' is selected and order exists
+    if (selectedCategory === 'All' && questions.categoryOrder) {
+      result.sort((a, b) => {
+        const catA = a.category
+        const catB = b.category
+        
+        if (catA === catB) return 0
+        
+        const indexA = questions.categoryOrder.indexOf(catA)
+        const indexB = questions.categoryOrder.indexOf(catB)
+        
+        if (indexA !== -1 && indexB !== -1) return indexA - indexB
+        if (indexA !== -1) return -1
+        if (indexB !== -1) return 1
+        return catA.localeCompare(catB)
+      })
+    }
+    
+    return result
   }, [searchTerm, selectedCategory])
 
   const handleAnswerClick = (questionId, answerIndex) => {
@@ -142,7 +206,7 @@ function App() {
                   {cat}
                   {cat !== 'All' && (
                     <span className="category-count">
-                      {questions.questions.filter(q => q.category === cat).length}
+                      {questions.questions.filter(q => (q.category || 'Other') === cat).length}
                     </span>
                   )}
                 </button>
@@ -160,12 +224,14 @@ function App() {
             {filteredQuestions.map((question) => {
               const revealed = revealedAnswers[question.id]
               const isRevealed = revealed !== undefined
+              // Use Display ID
+              const displayId = displayIdMap[question.id] || question.id
 
               return (
                 <div key={question.id} className="question-item card">
                   <div className="question-header">
-                    <span className="question-number">#{question.id}</span>
-                    <span className="category-badge">{question.category}</span>
+                    <span className="question-number">#{displayId}</span>
+                    <span className="category-badge">{question.category || 'Other'}</span>
                     {isRevealed && (
                       <button 
                         className="reset-btn"
